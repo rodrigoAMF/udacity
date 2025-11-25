@@ -23,6 +23,8 @@
 #    python check_images.py --dir pet_images/ --arch vgg --dogfile dognames.txt
 ##
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 # Imports python modules
 from time import time, sleep
 
@@ -39,8 +41,8 @@ from print_results import print_results
 
 # Main program function defined below
 def main():
-    # TODO 0: Measures total program runtime by collecting start time
-    start_time = 
+    # Measures total program runtime by collecting start time
+    start_time = time()
     
     # TODO 1: Define get_input_args function within the file get_input_args.py
     # This function retrieves 3 Command Line Arugments from user as input from
@@ -114,15 +116,16 @@ def main():
     # Prints summary results, incorrect classifications of dogs (if requested)
     # and incorrectly classified breeds (if requested)
     print_results(results, results_stats, None, True, True)
+
+    # Measures total program runtime by collecting end time
+    end_time = time()
     
-    # TODO 0: Measure total program runtime by collecting end time
-    end_time =
-    
-    # TODO 0: Computes overall runtime in seconds & prints it in hh:mm:ss format
-    tot_time = #calculate difference between end time and start time
-    print("\n** Total Elapsed Runtime:",
-          str(int((tot_time/3600)))+":"+str(int((tot_time%3600)/60))+":"
-          +str(int((tot_time%3600)%60)) )
+    # Computes overall runtime in seconds & prints it in hh:mm:ss format
+    tot_time = end_time - start_time
+    hour = int(tot_time / 3600)
+    minute = int((tot_time % 3600) / 60)
+    second = int((tot_time % 3600) % 60)
+    print(f"\n** Total Elapsed Runtime: {hour:02}:{minute:02}:{second:02}")
     
 
 # Call to main function to run the program
