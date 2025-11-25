@@ -1,11 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# */AIPND-revision/intropyproject-classify-pet-images/check_images.py
-#
-# TODO 0: Add your information below for Programmer & Date Created.                                                                             
-# PROGRAMMER: 
-# DATE CREATED:                                  
-# REVISED DATE: 
 # PURPOSE: Classifies pet images using a pretrained CNN model, compares these
 #          classifications to the true identity of the pets in the images, and
 #          summarizes how well the CNN performed on the image classification task. 
@@ -21,7 +14,7 @@
 #             --dogfile <file that contains dognames>
 #   Example call:
 #    python check_images.py --dir pet_images/ --arch vgg --dogfile dognames.txt
-##
+#
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -44,8 +37,8 @@ def main():
     # Measures total program runtime by collecting start time
     start_time = time()
     
-    # TODO 1: Define get_input_args function within the file get_input_args.py
-    # This function retrieves 3 Command Line Arugments from user as input from
+    # Define get_input_args function within the file get_input_args.py
+    # This function retrieves 3 Command Line Arguments from user as input from
     # the user running the program from a terminal window. This function returns
     # the collection of these command line arguments from the function call as
     # the variable in_arg
@@ -54,15 +47,9 @@ def main():
     # Function that checks command line arguments using in_arg  
     check_command_line_arguments(in_arg)
 
-    
-    # TODO 2: Define get_pet_labels function within the file get_pet_labels.py
-    # Once the get_pet_labels function has been defined replace 'None' 
-    # in the function call with in_arg.dir  Once you have done the replacements
-    # your function call should look like this: 
-    #             get_pet_labels(in_arg.dir)
+    # Define get_pet_labels function within the file get_pet_labels.py
     # This function creates the results dictionary that contains the results, 
-    # this dictionary is returned from the function call as the variable results
-    results = get_pet_labels(None)
+    results = get_pet_labels(in_arg.dir)
 
     # Function that checks Pet Images in the results Dictionary using results    
     check_creating_pet_image_labels(results)
