@@ -66,5 +66,15 @@ def adjust_results4_isadog(results_dic, dogfile):
                maltese) (string - indicates text file's filename)
     Returns:
            None - results_dic is mutable data type so no return needed.
-    """           
-    None
+    """
+    with open(dogfile, "r") as f:
+      dog_names = f.readlines()
+    dog_names = [name.lower().strip() for name in dog_names]
+    for image in results_dic.keys():
+      correct_label = results_dic[image][0]
+      predict_label = results_dic[image][1]
+
+      is_dog = 1 if correct_label in dog_names else 0
+      classified_as_dog = 1 if predict_label in dog_names else 0
+
+      results_dic[image].extend([is_dog, classified_as_dog])
