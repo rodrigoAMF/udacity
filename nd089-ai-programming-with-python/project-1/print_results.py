@@ -62,5 +62,32 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
-    None
-                
+    print(f"Model Architecture: {model}\n")
+
+    print(f"Number of Images: {results_stats_dic['n_images']}")
+    print(f"Number of Dog Images: {results_stats_dic['n_dogs_img']}")
+    print(f"Number of 'Not-a' Dog Images: {results_stats_dic['n_notdogs_img']}")
+
+    print(f"% Correct Dogs: {results_stats_dic['pct_correct_dogs']:.2f}%")
+    print(f"% Correct Breed: {results_stats_dic['pct_correct_breed']:.2f}%")
+    print(f"% Correct 'Not-a' Dog: {results_stats_dic['pct_correct_notdogs']:.2f}%")
+    print(f"% Match: {results_stats_dic['pct_match']:.2f}%")
+
+    if print_incorrect_dogs:
+        incorrect_dogs = [key for key, value in results_dic.items() 
+                          if value[3] == 1 and value[4] == 0]
+        if incorrect_dogs:
+            print("\nIncorrectly Classified Dogs:")
+            for key in incorrect_dogs:
+                print(f"image: {key:>30}  classified: {results_dic[key][1]:>30}  real: {results_dic[key][0]:>25}")
+        else:
+            print("\nNo incorrectly classified dogs.")
+    if print_incorrect_breed:
+        incorrect_breeds = [key for key, value in results_dic.items() 
+                        if value[3] == 1 and value[4] == 1 and value[2] == 0]
+        if incorrect_breeds:
+            print("\nIncorrectly Classified Dog Breeds:")
+            for key in incorrect_breeds:
+                print(f"image: {key:>30}  classified: {results_dic[key][1]:>30}  real: {results_dic[key][0]:>25}")
+        else:
+            print("\nNo incorrectly classified dog breeds.")

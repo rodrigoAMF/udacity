@@ -74,10 +74,12 @@ def calculates_results_stats(results_dic):
     n_correct_dogs = sum([1 for image in results_dic.values() if image[3] == 1 and image[4] == 1])
     n_correct_breed = sum([1 for image in results_dic.values() if image[3] == 1 and image[2] == 1])
     n_correct_notdogs = sum([1 for image in results_dic.values() if image[3] == 0 and image[4] == 0])
+    n_match = sum([1 for image in results_dic.values() if image[2] == 1])
 
     pct_correct_dogs = (n_correct_dogs/n_dogs) * 100.0
     pct_correct_breed = (n_correct_breed/n_dogs) * 100.0
     pct_correct_notdogs = (n_correct_notdogs/n_notdogs) * 100.0 if n_notdogs > 0 else 0.0
+    pct_match = (n_match/total_images) * 100.0
 
     results_stats_dic = {
         "n_images": total_images,
@@ -89,6 +91,7 @@ def calculates_results_stats(results_dic):
         "pct_correct_dogs": pct_correct_dogs,
         "pct_correct_breed": pct_correct_breed,
         "pct_correct_notdogs": pct_correct_notdogs,
+        "pct_match": pct_match
     }
 
     return results_stats_dic
