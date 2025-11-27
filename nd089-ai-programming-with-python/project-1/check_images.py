@@ -94,7 +94,7 @@ def main():
     check_calculating_results(results, results_stats)
 
 
-    # TODO 6: Define print_results function within the file print_results.py
+    # Define print_results function within the file print_results.py
     # Once the print_results function has been defined replace 'None' 
     # in the function call with in_arg.arch  Once you have done the 
     # replacements your function call should look like this: 
